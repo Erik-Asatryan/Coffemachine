@@ -15,7 +15,7 @@ class Coffe_Machine{
 		prices_list{100, 200, 300, 150, 250, 400, 50},
 		names{"Black Coffe", "Mac Cofee", "Capuccino", "Milk", "Espresso", "Glasse", "empty cup"}	
 		{};
-	
+
 		void print_list(){
 			for(int i = 0; i < 7; i++){
 				std::cout<<prices_list[i]<<"--------"<<names[i]<<std::endl;	
@@ -32,15 +32,16 @@ class Coffe_Machine{
 					break;
 				}if(p.order_name == names[i] && p.price < prices_list[i]){
 					price_key = false;
+					key = true;
 					break;
 				}
 			}
 			if(!key){
-				std::cout<<"This Type of hot drink was not in List"<<std::endl;
+				std::cout<<"The Type of hot drink was not in List"<<std::endl;
 				return p;
 			}
 			if(!price_key){
-				std::cout<<"The balance was little then price of order"<<std::endl;
+				std::cout<<"Balance was little from price of order"<<std::endl;
 				return p;
 			}
 			else{
@@ -56,14 +57,12 @@ int main(){
 	Coffe_Machine order;
 	order.print_list();
 	
-
 	Transaction my_order;
+	std::cout<<"Press name your choosed drink"<<my_order.order_name<<std::endl;
+	std::getline(std::cin,my_order.order_name);
 	std::cout<<"Press money for transaction"<<std::endl;
 	std::cin>>my_order.price;
-	
 	int pricer = my_order.price;
-	std::cout<<"Press name your choosed drink"<<my_order.order_name<<std::endl;
-	std::cin>>my_order.order_name;
 
 	order.my_pay(my_order);
 	if(pricer != my_order.price){
